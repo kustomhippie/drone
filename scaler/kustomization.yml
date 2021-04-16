@@ -1,0 +1,35 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - serviceaccount.yml
+
+  - service.yml
+  - deployment.yml
+
+commonLabels:
+  app.kubernetes.io/name: drone
+  app.kubernetes.io/component: scaler
+
+images:
+  - name: drone-scaler
+    newName: docker.io/drone/autoscaler
+    newTag: "1.7"
+
+configMapGenerator:
+  - name: drone-scaler
+    literals:
+      - DRONE_AGENT_CONCURRENCY=2
+      - DRONE_AGENT_IMAGE=drone/drone-runner-docker:1
+
+      - DRONE_POOL_MIN_AGE=1h
+      - DRONE_POOL_MIN=0
+      - DRONE_POOL_MAX=10
+      - DRONE_TIMEOUT_STOP=3h
+
+      - DRONE_GC_ENABLED=true
+      - DRONE_REAPER_ENABLED=true
+      - DRONE_WATCHTOWER_ENABLED=true
+
+...

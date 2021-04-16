@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: drone-server
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: Recreate
+
+  template:
+    spec:
+      serviceAccountName: drone-server
+
+      containers:
+        - name: server
+          image: drone-server
+          imagePullPolicy: IfNotPresent
+
+          envFrom:
+            - configMapRef:
+                name: drone-server
+
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /version
+              port: http
+
+...

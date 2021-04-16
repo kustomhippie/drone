@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: drone-scaler
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: Recreate
+
+  template:
+    spec:
+      serviceAccountName: drone-scaler
+
+      containers:
+        - name: server
+          image: drone-scaler
+          imagePullPolicy: IfNotPresent
+
+          envFrom:
+            - configMapRef:
+                name: drone-scaler
+
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+
+...

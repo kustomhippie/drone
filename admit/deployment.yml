@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: drone-admit
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: Recreate
+
+  template:
+    spec:
+      serviceAccountName: drone-admit
+
+      containers:
+        - name: server
+          image: drone-admit
+          imagePullPolicy: IfNotPresent
+
+          envFrom:
+            - configMapRef:
+                name: drone-admit
+
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+
+...
