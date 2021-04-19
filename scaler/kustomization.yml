@@ -14,7 +14,7 @@ commonLabels:
 
 images:
   - name: drone-scaler
-    newName: docker.io/tboerger/autoscaler
+    newName: docker.io/drone/autoscaler
     newTag: "latest"
 
 configMapGenerator:
