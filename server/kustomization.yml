@@ -14,7 +14,7 @@ commonLabels:
 
 images:
   - name: drone-server
-    newName: docker.io/drone/drone
+    newName: drone/drone
     newTag: "1.10"
 
 configMapGenerator:

@@ -14,7 +14,7 @@ commonLabels:
 
 images:
   - name: drone-scaler
-    newName: docker.io/drone/autoscaler
+    newName: drone/autoscaler
     newTag: "latest"
 
 configMapGenerator:

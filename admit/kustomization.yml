@@ -14,7 +14,7 @@ commonLabels:
 
 images:
   - name: drone-admit
-    newName: docker.io/drone/drone-admit-members
+    newName: drone/drone-admit-members
     newTag: "latest"
 
 configMapGenerator:
