@@ -15,7 +15,7 @@ commonLabels:
 images:
   - name: drone-server
     newName: drone/drone
-    newTag: "2.18"
+    newTag: "2.19"
 
 configMapGenerator:
   - name: drone-server
