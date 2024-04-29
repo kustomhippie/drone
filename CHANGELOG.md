@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/kustomhippie/drone/compare/v2.4.0...v2.5.0) (2024-04-29)
+
+
+### Features
+
+* **deps:** update drone/drone docker tag to v2.23 ([2d01a5e](https://github.com/kustomhippie/drone/commit/2d01a5ea01b98c6d5431b98d1c9c5386204a4743))
+
 ## [2.4.0](https://github.com/kustomhippie/drone/compare/v2.3.0...v2.4.0) (2024-01-08)
 
 
